@@ -1,0 +1,69 @@
+# import User, UserRoles from "types/User.graphql"
+# import Store from "types/Store.graphql"
+# import Item from "types/Item.graphql"
+
+scalar JSON
+scalar JSONObject
+
+directive @authenticate(roles: [String] = ["REGULAR"]) on FIELD_DEFINITION
+
+"""
+App queries
+"""
+type Query {
+  """
+  Get currently logged user
+  """
+  me: User @authenticate
+  store(
+    id: String!
+  ): Store
+  item(
+    id: String!
+  ): Item
+}
+
+"""
+App mutations
+"""
+type Mutation {
+  """
+  Create a new user
+  """
+  createUser(
+    """
+    User's username
+    """
+    username: String!
+    """
+    User's email
+    """
+    email: String!
+    """
+    User's password
+    """
+    password: String!
+  ): User
+
+  """
+  Update user profile information
+  """
+  updateProfile(
+    """
+    New username
+    """
+    username: String
+    """
+    New password
+    """
+    password: String
+    """
+    Password confirmation
+    """
+    confirmPassword: String!
+  ): User @authenticate
+
+  createStore(name: String!): Store
+  createItem(name: String!, price: Float): Item
+  addItem(id: String!, storeId: String!): Store
+}

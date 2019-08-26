@@ -5,6 +5,7 @@ import helmet from 'helmet'
 
 import ioMiddleware from './middlewares/io'
 import authMiddleware from './middlewares/auth'
+import apolloMiddleware from './middlewares/apollo'
 
 import authRouter from './routes/auth'
 
@@ -18,6 +19,7 @@ app.use(morgan('dev'))
 
 ioMiddleware.set(app)
 authMiddleware.set(app)
+apolloMiddleware.set(app)
 
 app.use('/auth', authRouter)
 

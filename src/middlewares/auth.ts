@@ -10,7 +10,7 @@ const RedisStore = createStore(session)
 
 passport.use(
   new Strategy(async (username: string, password: string, done) => {
-    let user = null
+    let user: UserDocument | null = null
 
     try {
       user = await UserModel.findOne({ username }).exec()
