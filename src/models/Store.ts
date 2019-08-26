@@ -1,8 +1,8 @@
 import { Schema, model, Document } from 'mongoose'
-import { Item } from './Item';
+import { Item } from './Item'
 
 export interface Store {
-  name: String
+  name: string
   items: [Item]
 }
 

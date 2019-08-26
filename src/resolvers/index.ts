@@ -4,25 +4,19 @@ import {
   mutations as userMutations,
 } from './user'
 
-import { 
-  mutation as itemMutation,
-  query as itemQuery 
-} from './item'
-import { 
-  mutation as storeMutation,
-  query as storeQuery 
-} from './store'
+import { mutation as itemMutation, query as itemQuery } from './item'
+import { mutation as storeMutation, query as storeQuery } from './store'
 
 export default {
   ...userRoot,
   Query: {
     ...userQueries,
     ...itemQuery,
-    ...storeQuery
+    ...storeQuery,
   },
   Mutation: {
     ...userMutations,
     ...itemMutation,
-    ...storeMutation
+    ...storeMutation,
   },
 }

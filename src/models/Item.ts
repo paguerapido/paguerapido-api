@@ -1,8 +1,8 @@
 import { Schema, model, Document } from 'mongoose'
 
 export interface Item {
-  name: String
-  price: Number
+  name: string
+  price: number
 }
 
 export interface ItemDocument extends Item, Document {}
