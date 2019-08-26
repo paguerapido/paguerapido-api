@@ -1,0 +1,57 @@
+# import User, UserRoles from "types/User.graphql"
+
+scalar JSON
+scalar JSONObject
+
+directive @authenticate(roles: [String] = ["REGULAR"]) on FIELD_DEFINITION
+
+"""
+App queries
+"""
+type Query {
+  """
+  Get currently logged user
+  """
+  me: User @authenticate
+}
+
+"""
+App mutations
+"""
+type Mutation {
+  """
+  Create a new user
+  """
+  createUser(
+    """
+    User's username
+    """
+    username: String!
+    """
+    User's email
+    """
+    email: String!
+    """
+    User's password
+    """
+    password: String!
+  ): User
+
+  """
+  Update user profile information
+  """
+  updateProfile(
+    """
+    New username
+    """
+    username: String
+    """
+    New password
+    """
+    password: String
+    """
+    Password confirmation
+    """
+    confirmPassword: String!
+  ): User @authenticate
+}
