@@ -1,0 +1,26 @@
+type Query {
+  store(
+    id: String!
+  ): Store
+  item(
+    id: String!
+  ): Item
+}
+
+type Mutation {
+  createStore(name: String!): Store
+  createItem(name: String!, price: Float): Item
+  addItem(id: String!, storeId: String!): Store
+}
+
+type Store {
+  id: String
+  name: String
+  items: [Item]
+}
+
+type Item {
+  id: String
+  name: String
+  price: Float
+}

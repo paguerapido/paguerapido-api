@@ -1,0 +1,11 @@
+type Store {
+  id: String
+  name: String
+  items: [Item]
+}
+
+type Item {
+  id: String
+  name: String
+  price: Float
+}
