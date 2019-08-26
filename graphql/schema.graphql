@@ -1,4 +1,6 @@
 # import User, UserRoles from "types/User.graphql"
+# import Store from "types/Store.graphql"
+# import Item from "types/Item.graphql"
 
 scalar JSON
 scalar JSONObject
@@ -13,6 +15,12 @@ type Query {
   Get currently logged user
   """
   me: User @authenticate
+  store(
+    id: String!
+  ): Store
+  item(
+    id: String!
+  ): Item
 }
 
 """
@@ -54,4 +62,8 @@ type Mutation {
     """
     confirmPassword: String!
   ): User @authenticate
+
+  createStore(name: String!): Store
+  createItem(name: String!, price: Float): Item
+  addItem(id: String!, storeId: String!): Store
 }
