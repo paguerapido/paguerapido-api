@@ -13,7 +13,7 @@ const server = new ApolloServer({
   schemaDirectives: directives,
   context: ({ req }) => ({
     user: req.user,
-  })
+  }),
 })
 
 export default {

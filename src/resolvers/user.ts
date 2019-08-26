@@ -5,7 +5,7 @@ import { User } from '../models/index'
 export const root = {
   User: {
     id: user => user._id,
-  }
+  },
 }
 
 export const queries = {
@@ -13,7 +13,6 @@ export const queries = {
     if (!user) {
       return null
     }
-    
     const dbUser = await User.findById(user._id)
 
     return dbUser
