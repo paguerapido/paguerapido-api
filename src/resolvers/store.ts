@@ -4,7 +4,7 @@ import { StoreDocument } from '../models/Store'
 
 export const root: IResolvers = {
   Store: {
-    items: root => Promise.all((root.items).map(id => Item.findById(id))),
+    items: root => Promise.all(root.items.map(id => Item.findById(id))),
   },
 }
 
