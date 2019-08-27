@@ -1,4 +1,12 @@
-import Store, { StoreDocument } from '../models/Store'
+import { IResolvers } from 'graphql-tools'
+import { Store, Item } from '../models'
+import { StoreDocument } from '../models/Store'
+
+export const root: IResolvers = {
+  Store: {
+    items: root => Promise.all(root.items.map(id => Item.findById(id))),
+  },
+}
 
 export const query = {
   store: (_, { id }) => Store.findById(id),

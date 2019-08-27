@@ -5,10 +5,16 @@ import {
 } from './user'
 
 import { mutation as itemMutation, query as itemQuery } from './item'
-import { mutation as storeMutation, query as storeQuery } from './store'
+
+import { 
+  root as storeRoot,
+  mutation as storeMutation, 
+  query as storeQuery 
+} from './store'
 
 export default {
   ...userRoot,
+  ...storeRoot,
   Query: {
     ...userQueries,
     ...itemQuery,
