@@ -16,13 +16,11 @@ export const query = {
 export const mutation = {
   createStore: (_, { name }) =>
     Store.create({ name }).then(document => document),
-  addItem: (_, { item, storeId }) =>
+  addItem: (_, { itemId, storeId }) =>
     Store.findById(storeId)
       .then(store => {
-        const { items } = store as StoreDocument
-        return Store.update(null, {
-          ...store,
-          item: [...items, item]
-        })
+        store = store as StoreDocument
+        store.items.push(itemId)
+        return store.save()
       })
 }
