@@ -15,9 +15,23 @@ type Query {
   Get currently logged user
   """
   me: User @authenticate
+  """
+  Get all Stores
+  """
+  stores: [Store]
+  """
+  Get all items from a Store
+  """
+  items(storeId: String): [Item]
+  """
+  Get a Store
+  """
   store(
     id: String!
   ): Store
+  """
+  Get an Item
+  """
   item(
     id: String!
   ): Item
@@ -62,8 +76,41 @@ type Mutation {
     """
     confirmPassword: String!
   ): User @authenticate
+  """
+  Create a new Store
+  """
+  createStore(
+    """
+    Store's name
+    """
+    name: String!
+  ): Store
 
-  createStore(name: String!): Store
-  createItem(name: String!, price: Float): Item
-  addItem(id: String!, storeId: String!): Store
+  """
+  Create a new Item
+  """ 
+  createItem(
+    """
+    Item's name
+    """
+    name: String!
+    """
+    Item's price
+    """
+    price: Float!
+  ): Item
+  
+  """
+  Add an Item to a Store
+  """
+  addItem(
+    """
+    Item's Id
+    """
+    itemId: String!
+    """
+    Store's Id
+    """
+    storeId: String!
+  ): Store
 }
