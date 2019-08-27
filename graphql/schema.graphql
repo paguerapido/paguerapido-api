@@ -83,7 +83,8 @@ type Mutation {
     """
     Store's name
     """
-    name: String!): Store
+    name: String!
+  ): Store
 
   """
   Create a new Item
@@ -96,7 +97,8 @@ type Mutation {
     """
     Item's price
     """
-    price: Float!): Item
+    price: Float!
+  ): Item
   
   """
   Add an Item to a Store
@@ -109,5 +111,6 @@ type Mutation {
     """
     Store's Id
     """
-    storeId: String!): Store
+    storeId: String!
+  ): Store
 }
