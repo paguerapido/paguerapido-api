@@ -15,7 +15,12 @@ const StoreSchema = new Schema<StoreDocument>({
     required: [true, 'Name is required'],
   },
   items: {
-    type: Array,
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Item'
+      }
+    ],
     required: [false],
   },
 })
