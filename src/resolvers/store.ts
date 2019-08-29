@@ -1,6 +1,5 @@
 import { IResolvers } from 'graphql-tools'
 import { Store, Item } from '../models'
-import { StoreDocument } from '../models/Store'
 
 export const root: IResolvers = {
   Store: {
@@ -10,17 +9,30 @@ export const root: IResolvers = {
 
 export const query = {
   store: (_, { id }) => Store.findById(id),
-  stores: () => Store.find()
+  stores: () => Store.find(),
+  searchItem: async (_, { name, storeId }) => {
+    const store = await Store.findById(storeId).populate('items')
+
+    if (store === null) {
+      return null
+    }
+
+    return store.items.filter(item => item.name.includes(name))
+  },
 }
 
 export const mutation = {
   createStore: (_, { name }) =>
     Store.create({ name }).then(document => document),
-  addItem: (_, { itemId, storeId }) =>
-    Store.findById(storeId)
-      .then(store => {
-        store = store as StoreDocument
-        store.items.push(itemId)
-        return store.save()
-      })
+  addItem: async (_, { itemId, storeId }) => {
+    const store = await Store.findById(storeId)
+
+    if (store === null) {
+      return null
+    }
+
+    store.items.push(itemId)
+
+    return store.save()
+  },
 }

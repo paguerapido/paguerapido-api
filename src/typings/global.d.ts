@@ -1,7 +1,13 @@
-import { User } from '../models'
+import { UserDocument } from '../models/User'
 
 declare global {
   interface Context {
-    user: User
+    user: UserDocument
+  }
+
+  namespace Express {
+    interface User extends UserDocument {
+      _id: string
+    }
   }
 }

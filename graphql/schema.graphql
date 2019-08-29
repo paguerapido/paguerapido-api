@@ -26,15 +26,24 @@ type Query {
   """
   Get a Store
   """
-  store(
-    id: String!
-  ): Store
+  store(id: String!): Store
   """
   Get an Item
   """
-  item(
-    id: String!
-  ): Item
+  item(id: String!): Item
+  """
+  A store can search an Item to add to a Cart
+  """
+  searchItem(
+    """
+    Item's name
+    """
+    name: String!
+    """
+    Store's Id
+    """
+    storeId: String!
+  ): [Item]
 }
 
 """
@@ -88,7 +97,7 @@ type Mutation {
 
   """
   Create a new Item
-  """ 
+  """
   createItem(
     """
     Item's name
@@ -99,7 +108,7 @@ type Mutation {
     """
     price: Float!
   ): Item
-  
+
   """
   Add an Item to a Store
   """
