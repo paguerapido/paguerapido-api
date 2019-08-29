@@ -18,6 +18,10 @@ import {
   query as cartQuery
 } from './cart'
 
+import {
+  mutation as shippingMutation
+} from './shipping'
+
 export default {
   ...userRoot,
   ...storeRoot,
@@ -33,5 +37,6 @@ export default {
     ...itemMutation,
     ...storeMutation,
     ...cartMutation,
+    ...shippingMutation,
   },
 }

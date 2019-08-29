@@ -1,9 +1,11 @@
 import { Schema, model, Document } from 'mongoose'
 import { Item } from './Item'
+import { Sale } from './Sale';
 
 export interface Store {
   name: string
   items: [Item]
+  sales: [Sale]
 }
 
 export interface StoreDocument extends Store, Document {}
@@ -23,6 +25,9 @@ const StoreSchema = new Schema<StoreDocument>({
     ],
     required: [false],
   },
+  sales: {
+    type: Array
+  }
 })
 
 export default model<StoreDocument>('Store', StoreSchema)

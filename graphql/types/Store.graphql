@@ -2,4 +2,11 @@ type Store {
   id: String
   name: String
   items: [Item]
+  sales: [Sale]
+}
+
+type Sale {
+  address: String
+  recipient: String
+  email: String
 }

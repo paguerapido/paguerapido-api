@@ -2,6 +2,7 @@
 # import Store from "types/Store.graphql"
 # import Item, ItemInput from "types/Item.graphql"
 # import Cart from "types/Cart.graphql"
+# import ShippingInput from "types/Shipping.graphql"
 
 scalar JSON
 scalar JSONObject
@@ -129,6 +130,9 @@ type Mutation {
     """
     items: [String!]!
   ): Cart
+  """
+  Adds an Item at a existing Cart
+  """
   addItemOnCart(
     """
     Cart's Id
@@ -138,5 +142,18 @@ type Mutation {
     Item's Id
     """
     itemId: String
+  ): Cart
+  """
+  Client's data
+  """
+  shipping(
+    """
+    Cart's Id
+    """
+    cartId: String
+    """
+    Buyer's data
+    """
+    buyersData: ShippingInput
   ): Cart
 }

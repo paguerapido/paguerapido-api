@@ -3,7 +3,7 @@ import { Store } from './Store';
 import { Item } from './Item';
 
 export interface Cart {
-  store: Store
+  store: String
   items: [Item]
 }
 
@@ -13,13 +13,13 @@ const CartSchema = new Schema<CartDocument>({
   store: {
     type: Schema.Types.ObjectId,
     ref: 'Store',
-    required: [true]
+    required: [true],
   },
   items: {
     type: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Item'
+        ref: 'Item',
       }
     ],
     required: [true]
