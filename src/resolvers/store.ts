@@ -24,15 +24,4 @@ export const query = {
 export const mutation = {
   createStore: (_, { name }) =>
     Store.create({ name }).then(document => document),
-  addItem: async (_, { itemId, storeId }) => {
-    const store = await Store.findById(storeId)
-
-    if (store === null) {
-      return null
-    }
-
-    store.items.push(itemId)
-
-    return store.save()
-  },
 }
