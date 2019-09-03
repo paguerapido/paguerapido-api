@@ -1,6 +1,7 @@
 # import User, UserRoles from "types/User.graphql"
 # import Store from "types/Store.graphql"
 # import Item, ItemInput from "types/Item.graphql"
+# import Sale from "types/Sale.graphql"
 # import Cart from "types/Cart.graphql"
 # import ShippingInput from "types/Shipping.graphql"
 
@@ -46,12 +47,10 @@ type Query {
     """
     storeId: String!
   ): [Item]
-  getCart(
-    """
-    Cart's Id
-    """
-    cartId: String!
-  ): Cart
+  """
+  Get a Cart
+  """
+  cart(cartId: String!): Cart
 }
 
 """
@@ -112,7 +111,7 @@ type Mutation {
     """
     item: ItemInput!
     """
-    Stores's Id
+    Store's Id
     """
     storeId: String!
   ): Item

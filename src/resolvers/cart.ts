@@ -14,7 +14,7 @@ export const root: IResolvers = {
 }
 
 export const query = {
-  getCart: (_, { cartId }) => Cart.findById(cartId),
+  cart: (_, { cartId }) => Cart.findById(cartId),
 }
 
 export const mutation = {

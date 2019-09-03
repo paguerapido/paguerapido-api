@@ -26,7 +26,12 @@ const StoreSchema = new Schema<StoreDocument>({
     required: [false],
   },
   sales: {
-    type: Array
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Sale'
+      }
+    ]
   }
 })
 

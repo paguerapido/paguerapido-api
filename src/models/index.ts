@@ -1,3 +1,5 @@
-export { default as User } from './User'
+export { default as Cart } from './Cart'
 export { default as Item } from './Item'
+export { default as Sale } from './Sale'
 export { default as Store } from './Store'
+export { default as User } from './User'
