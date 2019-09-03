@@ -1,5 +1,5 @@
 import Cart from '../models/Cart'
-import Store from '../models/Store';
+import Store from '../models/Store'
 
 export const mutation = {
   shipping: async (_, { cartId, buyersData }) => {
@@ -9,9 +9,13 @@ export const mutation = {
     }
 
     const store = await Store.findById(cart.store)
-    store!.sales.push(buyersData)
-    await store!.save()
+    if (store === null) {
+      return
+    }
+
+    store.sales.push(buyersData)
+    await store.save()
 
     return cart
-  }
+  },
 }

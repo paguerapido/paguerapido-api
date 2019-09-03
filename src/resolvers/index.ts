@@ -6,21 +6,19 @@ import {
 
 import { mutation as itemMutation, query as itemQuery } from './item'
 
-import { 
+import {
   root as storeRoot,
-  mutation as storeMutation, 
-  query as storeQuery 
+  mutation as storeMutation,
+  query as storeQuery,
 } from './store'
 
 import {
   root as cartRoot,
   mutation as cartMutation,
-  query as cartQuery
+  query as cartQuery,
 } from './cart'
 
-import {
-  mutation as shippingMutation
-} from './shipping'
+import { mutation as shippingMutation } from './shipping'
 
 export default {
   ...userRoot,

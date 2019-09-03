@@ -1,9 +1,8 @@
 import { Schema, model, Document } from 'mongoose'
-import { Store } from './Store';
-import { Item } from './Item';
+import { Item } from './Item'
 
 export interface Cart {
-  store: String
+  store: string
   items: [Item]
 }
 
@@ -20,10 +19,10 @@ const CartSchema = new Schema<CartDocument>({
       {
         type: Schema.Types.ObjectId,
         ref: 'Item',
-      }
+      },
     ],
-    required: [true]
-  }
+    required: [true],
+  },
 })
 
 export default model<CartDocument>('Cart', CartSchema)

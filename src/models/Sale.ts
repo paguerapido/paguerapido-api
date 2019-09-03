@@ -1,9 +1,9 @@
 import { Schema, model, Document } from 'mongoose'
 
 export interface Sale {
-  address: String
-  recipient: String
-  email: String
+  address: string
+  recipient: string
+  email: string
 }
 
 export interface SaleDocument extends Sale, Document {}

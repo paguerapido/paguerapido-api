@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose'
 import { Item } from './Item'
-import { Sale } from './Sale';
+import { Sale } from './Sale'
 
 export interface Store {
   name: string
@@ -20,8 +20,8 @@ const StoreSchema = new Schema<StoreDocument>({
     type: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Item'
-      }
+        ref: 'Item',
+      },
     ],
     required: [false],
   },
@@ -29,10 +29,10 @@ const StoreSchema = new Schema<StoreDocument>({
     type: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Sale'
-      }
-    ]
-  }
+        ref: 'Sale',
+      },
+    ],
+  },
 })
 
 export default model<StoreDocument>('Store', StoreSchema)

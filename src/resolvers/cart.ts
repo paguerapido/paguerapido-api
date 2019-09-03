@@ -9,8 +9,8 @@ const verifyItem = (storeItems, item) => {
 
 export const root: IResolvers = {
   Cart: {
-    items: root => root.items.map(itemId => Item.findById(itemId))
-  }
+    items: root => root.items.map(itemId => Item.findById(itemId)),
+  },
 }
 
 export const query = {
@@ -18,16 +18,19 @@ export const query = {
 }
 
 export const mutation = {
-  createCart: async (_, { storeId, items}) => {
+  createCart: async (_, { storeId, items }) => {
     const store = await Store.findById(storeId)
     if (store === null) {
       return null
     }
 
-    const verifyItems = items.reduce((isValid, item) => isValid && verifyItem(store.items, item), true)
+    const verifyItems = items.reduce(
+      (isValid, item) => isValid && verifyItem(store.items, item),
+      true
+    )
 
     if (!verifyItems) {
-      return Promise.reject("Invalid Item(s)")
+      return Promise.reject('Invalid Item(s)')
     }
 
     return Cart.create({ store, items })
