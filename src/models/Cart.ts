@@ -1,15 +1,12 @@
 import { Schema, model, Document } from 'mongoose'
-import { Store } from './Store';
 import { Item } from './Item';
 
-export interface Cart {
+interface Cart extends Document {
   store: String
   items: [Item]
 }
 
-export interface CartDocument extends Cart, Document {}
-
-const CartSchema = new Schema<CartDocument>({
+const CartSchema = new Schema<Cart>({
   store: {
     type: Schema.Types.ObjectId,
     ref: 'Store',
@@ -26,4 +23,4 @@ const CartSchema = new Schema<CartDocument>({
   }
 })
 
-export default model<CartDocument>('Cart', CartSchema)
+export default model<Cart>('Cart', CartSchema)

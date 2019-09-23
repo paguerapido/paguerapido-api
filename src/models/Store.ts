@@ -2,15 +2,13 @@ import { Schema, model, Document } from 'mongoose'
 import { Item } from './Item'
 import { Sale } from './Sale';
 
-export interface Store {
+export interface Store extends Document {
   name: string
   items: [Item]
   sales: [Sale]
 }
 
-export interface StoreDocument extends Store, Document {}
-
-const StoreSchema = new Schema<StoreDocument>({
+const StoreSchema = new Schema<Store>({
   name: {
     type: String,
     unique: false,
@@ -30,4 +28,4 @@ const StoreSchema = new Schema<StoreDocument>({
   }
 })
 
-export default model<StoreDocument>('Store', StoreSchema)
+export default model<Store>('Store', StoreSchema)

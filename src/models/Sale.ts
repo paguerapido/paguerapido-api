@@ -1,14 +1,12 @@
 import { Schema, model, Document } from 'mongoose'
 
-export interface Sale {
+export interface Sale extends Document {
   address: String
   recipient: String
   email: String
 }
 
-export interface SaleDocument extends Sale, Document {}
-
-const SaleSchema = new Schema<SaleDocument>({
+const SaleSchema = new Schema<Sale>({
   address: {
     type: String,
     required: [true],
@@ -23,4 +21,4 @@ const SaleSchema = new Schema<SaleDocument>({
   },
 })
 
-export default model<SaleDocument>('Sale', SaleSchema)
+export default model<Sale>('Sale', SaleSchema)
