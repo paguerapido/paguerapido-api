@@ -11,8 +11,8 @@ export const mutation = {
     if (store === null) {
       return null
     }
-    
-    const createdItem =  await Item.create(item)
+
+    const createdItem = await Item.create(item)
     store.items.push(createdItem)
     await store.save()
 
