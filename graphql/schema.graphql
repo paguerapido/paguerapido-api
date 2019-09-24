@@ -50,7 +50,7 @@ type Query {
   """
   Get a Cart
   """
-  cart(cartId: String!): Cart
+  cart(cartId: String!): Cart @authenticate
 }
 
 """
@@ -100,7 +100,7 @@ type Mutation {
     Store's name
     """
     name: String!
-  ): Store
+  ): Store @authenticate(roles: ["ADMIN"])
 
   """
   Create a new Item
@@ -114,7 +114,7 @@ type Mutation {
     Store's Id
     """
     storeId: String!
-  ): Item
+  ): Item @authenticate(roles: ["ADMIN"])
 
   """
   Creates a Cart on a Store
@@ -128,7 +128,7 @@ type Mutation {
     Collection of Item's id
     """
     items: [String!]!
-  ): Cart
+  ): Cart @authenticate
   """
   Adds an Item at a existing Cart
   """
@@ -141,7 +141,7 @@ type Mutation {
     Item's Id
     """
     itemId: String
-  ): Cart
+  ): Cart @authenticate
   """
   Client's data
   """
@@ -154,5 +154,5 @@ type Mutation {
     Buyer's data
     """
     buyersData: ShippingInput
-  ): Cart
+  ): Cart @authenticate
 }
