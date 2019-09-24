@@ -17,10 +17,10 @@ const CartSchema = new Schema<Cart>({
       {
         type: Schema.Types.ObjectId,
         ref: 'Item',
-      }
+      },
     ],
-    required: [true]
-  }
+    required: [true],
+  },
 })
 
 export default model<Cart>('Cart', CartSchema)

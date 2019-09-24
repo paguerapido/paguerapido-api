@@ -4,9 +4,3 @@ type Store {
   items: [Item]
   sales: [Sale]
 }
-
-type Sale {
-  address: String
-  recipient: String
-  email: String
-}

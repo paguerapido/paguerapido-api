@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose'
 import { Item } from './Item'
-import { Sale } from './Sale';
+import { Sale } from './Sale'
 
 export interface Store extends Document {
   name: string
@@ -18,14 +18,19 @@ const StoreSchema = new Schema<Store>({
     type: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Item'
-      }
+        ref: 'Item',
+      },
     ],
     required: [false],
   },
   sales: {
-    type: Array
-  }
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Sale',
+      },
+    ],
+  },
 })
 
 export default model<Store>('Store', StoreSchema)
