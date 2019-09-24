@@ -42,7 +42,7 @@
     "@types/mongoose": "^5.5.12",
     "@types/morgan": "^1.7.36",
     "@types/node": "^12.7.1",
-    "@types/passport": "^1.0.0",
+    "@types/passport": "^1.0.1",
     "@types/passport-local": "^1.0.33",
     "@types/shortid": "^0.0.29",
     "eslint": "^6.1.0",

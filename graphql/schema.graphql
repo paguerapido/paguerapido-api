@@ -1,6 +1,9 @@
 # import User, UserRoles from "types/User.graphql"
 # import Store from "types/Store.graphql"
-# import Item from "types/Item.graphql"
+# import Item, ItemInput from "types/Item.graphql"
+# import Sale from "types/Sale.graphql"
+# import Cart from "types/Cart.graphql"
+# import ShippingInput from "types/Shipping.graphql"
 
 scalar JSON
 scalar JSONObject
@@ -44,6 +47,10 @@ type Query {
     """
     storeId: String!
   ): [Item]
+  """
+  Get a Cart
+  """
+  cart(cartId: String!): Cart
 }
 
 """
@@ -100,26 +107,52 @@ type Mutation {
   """
   createItem(
     """
-    Item's name
+    Item
     """
-    name: String!
-    """
-    Item's price
-    """
-    price: Float!
-  ): Item
-
-  """
-  Add an Item to a Store
-  """
-  addItem(
-    """
-    Item's Id
-    """
-    itemId: String!
+    item: ItemInput!
     """
     Store's Id
     """
     storeId: String!
-  ): Store
+  ): Item
+
+  """
+  Creates a Cart on a Store
+  """
+  createCart(
+    """
+    Store's id
+    """
+    storeId: String!
+    """
+    Collection of Item's id
+    """
+    items: [String!]!
+  ): Cart
+  """
+  Adds an Item at a existing Cart
+  """
+  addItemOnCart(
+    """
+    Cart's Id
+    """
+    cartId: String
+    """
+    Item's Id
+    """
+    itemId: String
+  ): Cart
+  """
+  Client's data
+  """
+  shipping(
+    """
+    Cart's Id
+    """
+    cartId: String
+    """
+    Buyer's data
+    """
+    buyersData: ShippingInput
+  ): Cart
 }

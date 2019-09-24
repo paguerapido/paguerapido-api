@@ -1,13 +1,10 @@
 import { Schema, model, Document } from 'mongoose'
 
-export interface Item {
+export interface Item extends Document {
   name: string
   price: number
 }
-
-export interface ItemDocument extends Item, Document {}
-
-const ItemSchema = new Schema<ItemDocument>({
+const ItemSchema = new Schema<Item>({
   name: {
     type: String,
     unique: false,
@@ -19,4 +16,4 @@ const ItemSchema = new Schema<ItemDocument>({
   },
 })
 
-export default model<ItemDocument>('Item', ItemSchema)
+export default model<Item>('Item', ItemSchema)

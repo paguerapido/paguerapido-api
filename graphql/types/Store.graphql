@@ -2,4 +2,5 @@ type Store {
   id: String
   name: String
   items: [Item]
+  sales: [Sale]
 }

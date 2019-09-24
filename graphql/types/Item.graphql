@@ -3,3 +3,8 @@ type Item {
   name: String
   price: Float
 }
+
+input ItemInput {
+  name: String
+  price: Float
+}
