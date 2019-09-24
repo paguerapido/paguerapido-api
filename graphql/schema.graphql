@@ -100,7 +100,7 @@ type Mutation {
     Store's name
     """
     name: String!
-  ): Store @authenticate(["ADMIN"])
+  ): Store @authenticate(roles: ["ADMIN"])
 
   """
   Create a new Item
@@ -114,7 +114,7 @@ type Mutation {
     Store's Id
     """
     storeId: String!
-  ): Item @authenticate(["ADMIN"])
+  ): Item @authenticate(roles: ["ADMIN"])
 
   """
   Creates a Cart on a Store
