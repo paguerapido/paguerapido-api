@@ -8,6 +8,7 @@ scalar JSON
 scalar JSONObject
 
 directive @authenticate(roles: [String] = ["REGULAR"]) on FIELD_DEFINITION
+directive @authenticateAdmin(roles: [String] = ["ADMIN"]) on FIELD_DEFINITION
 
 """
 App queries
@@ -51,7 +52,7 @@ type Query {
     Cart's Id
     """
     cartId: String!
-  ): Cart
+  ): Cart @authenticate
 }
 
 """
@@ -101,7 +102,7 @@ type Mutation {
     Store's name
     """
     name: String!
-  ): Store
+  ): Store @authenticateAdmin
 
   """
   Create a new Item
@@ -115,7 +116,7 @@ type Mutation {
     Stores's Id
     """
     storeId: String!
-  ): Item
+  ): Item @authenticateAdmin
 
   """
   Creates a Cart on a Store
@@ -129,7 +130,7 @@ type Mutation {
     Collection of Item's id
     """
     items: [String!]!
-  ): Cart
+  ): Cart @authenticate
   """
   Adds an Item at a existing Cart
   """
@@ -142,7 +143,7 @@ type Mutation {
     Item's Id
     """
     itemId: String
-  ): Cart
+  ): Cart @authenticate
   """
   Client's data
   """
@@ -155,5 +156,5 @@ type Mutation {
     Buyer's data
     """
     buyersData: ShippingInput
-  ): Cart
+  ): Cart @authenticate
 }
