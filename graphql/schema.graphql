@@ -9,7 +9,6 @@ scalar JSON
 scalar JSONObject
 
 directive @authenticate(roles: [String] = ["REGULAR"]) on FIELD_DEFINITION
-directive @authenticateAdmin(roles: [String] = ["ADMIN"]) on FIELD_DEFINITION
 
 """
 App queries
@@ -101,7 +100,7 @@ type Mutation {
     Store's name
     """
     name: String!
-  ): Store @authenticateAdmin
+  ): Store @authenticate(["ADMIN"])
 
   """
   Create a new Item
@@ -115,7 +114,7 @@ type Mutation {
     Store's Id
     """
     storeId: String!
-  ): Item @authenticateAdmin
+  ): Item @authenticate(["ADMIN"])
 
   """
   Creates a Cart on a Store
