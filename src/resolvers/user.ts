@@ -1,5 +1,4 @@
 import { AuthenticationError } from 'apollo-server'
-
 import { User } from '../models/index'
 
 export const root = {

@@ -1,7 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-express'
 import { importSchema } from 'graphql-import'
 import UserModel from '../models/User'
-import { jwt } from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken'
 
 import directives from '../directives'
 import resolvers from '../resolvers'
@@ -15,9 +15,9 @@ const server = new ApolloServer({
   schemaDirectives: directives,
   context: async ({ req }) => {
     const token = req.headers.authorization!.split(" ")[1] || ''
-    const decoded = jwt.verify(token);
-    return UserModel.findOne(decoded.id, 'muitosegredocaralho') // store secret at env var
-      .exec().then(user => { user })
+    const decoded = jwt.verify(token, 'muitosegredocaralho');
+    return UserModel.findOne(decoded.id) // store secret at env var
+      .exec().then(user => ({ user }))
   },
 })
 

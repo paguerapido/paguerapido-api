@@ -1,12 +1,12 @@
 import { Router } from 'express'
 import { authenticate } from 'passport'
-import { jsonwebtoken as jwt } from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken'
 
 const router = Router()
 const secret = "muitosegredocaralho" // store this at an enviroment variable
 
-router.post('/login', authenticate('local'), (req, res) => {
-  const user = req.user
+router.post('/login', (req, res) => {
+  const user = req.body
   const token = jwt.sign(user, secret)
   res.json({ user, token })
 })
