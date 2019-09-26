@@ -1,7 +1,7 @@
 # PagueRapido API
 
 ## Architecture
-Access [here](https://docs.google.com/drawings/d/1BvKkllylvRzKgT_U5Oi3gg-je70_MXtmOB54OJu3KO8/edit?usp=sharing)
+![Architecture](https://raw.githubusercontent.com/paguerapido/paguerapido-api/readme/architecture.png)
 
 ## How to run this API
 
