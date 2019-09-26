@@ -8,6 +8,7 @@ import resolvers from '../resolvers'
 
 const schema = importSchema('./graphql/schema.graphql')
 const typeDefs = gql(schema)
+const secret = process.env.JWT_SECRET || 'not-secret'
 
 const server = new ApolloServer({
   resolvers,
@@ -15,8 +16,8 @@ const server = new ApolloServer({
   schemaDirectives: directives,
   context: async ({ req }) => {
     const token = req.headers.authorization!.split(" ")[1] || ''
-    const decoded = jwt.verify(token, 'muitosegredocaralho');
-    return UserModel.findOne(decoded.id) // store secret at env var
+    const decoded = jwt.verify(token, secret);
+    return UserModel.findOne(decoded.id)
       .exec().then(user => ({ user }))
   },
 })
