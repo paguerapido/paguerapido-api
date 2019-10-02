@@ -21,19 +21,19 @@ type Query {
   """
   Get all Stores
   """
-  stores: [Store]
+  stores: [Store] @cacheControl(scope: PRIVATE)
   """
   Get all items from a Store
   """
-  items(storeId: String): [Item]
+  items(storeId: String): [Item] @cacheControl(scope: PRIVATE)
   """
   Get a Store
   """
-  store(id: String!): Store
+  store(id: String!): Store @cacheControl(scope: PRIVATE)
   """
   Get an Item
   """
-  item(id: String!): Item
+  item(id: String!): Item @cacheControl(scope: PRIVATE)
   """
   A store can search an Item to add to a Cart
   """

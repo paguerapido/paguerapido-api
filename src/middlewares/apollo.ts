@@ -14,6 +14,9 @@ const server = new ApolloServer({
   resolvers,
   typeDefs,
   schemaDirectives: directives,
+  cacheControl: {
+    defaultMaxAge: 60,
+  },
   context: async ({ req }) => {
     const token = req.headers.authorization!.split(" ")[1] || ''
     const decoded = jwt.verify(token, secret);
