@@ -1,4 +1,4 @@
-type Store {
+type Store @cacheControl {
   id: String
   name: String
   items: [Item]

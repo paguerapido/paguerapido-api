@@ -1,7 +1,7 @@
-type Item {
+type Item @cacheControl {
   id: String
   name: String
-  price: Float
+  price: Float @cacheControl(maxAge: 10)
 }
 
 input ItemInput {

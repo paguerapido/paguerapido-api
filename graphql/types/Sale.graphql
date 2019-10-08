@@ -1,4 +1,4 @@
-type Sale {
+type Sale @cacheControl {
   address: String
   recipient: String
   email: String
