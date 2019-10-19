@@ -10,6 +10,16 @@ scalar JSONObject
 
 directive @authenticate(roles: [String] = ["REGULAR"]) on FIELD_DEFINITION
 
+directive @cacheControl(
+  maxAge: Int,
+  scope: CacheControlScope
+) on OBJECT | FIELD_DEFINITION
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
 """
 App queries
 """
