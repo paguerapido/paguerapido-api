@@ -1,4 +1,4 @@
-type Cart {
+type Cart @cacheControl(maxAge: 30){
   id: String
   storeId: String
   items: [Item]
