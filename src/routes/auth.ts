@@ -9,7 +9,7 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body
   const user = await UserModel.findOne({ username })
   if (user && (await user.comparePassword(password))) {
-    const token = jwt.sign(user, secret)
+    const token = jwt.sign(user.toJSON(), secret)
     res.json({ user, token })
   }
 })
