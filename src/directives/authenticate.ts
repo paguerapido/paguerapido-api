@@ -18,7 +18,7 @@ export default class AuthenticateDirective extends SchemaDirectiveVisitor {
       }
 
       const userRoles = user.roles || ['REGULAR']
-
+      
       if (!requiredRoles.every(role => userRoles.includes(role))) {
         return new ForbiddenError("User doesn't have enough access")
       }
