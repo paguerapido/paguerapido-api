@@ -22,9 +22,12 @@ const server = new ApolloServer({
       return {}
     }
     const token = req.headers.authorization!.split(" ")[1]
-    const decoded = jwt.verify(token, secret);
-    return UserModel.findOne(decoded.id)
-      .exec().then(user => ({ user }))
+    const decoded = jwt.verify(token, secret)
+    const { _id } = decoded
+    return UserModel.findOne({ _id } )
+      .exec().then(user => {
+        return ({ user })
+      })
   },
 })
 
