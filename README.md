@@ -42,10 +42,10 @@ The system uses the Apollo server default cache service. The entities were cache
 
 ![Response Time with no Cache](https://raw.githubusercontent.com/paguerapido/paguerapido-api/graficos/images/responsetimesemcache.png)
 
-Neste primeiro gráfico podemos ver que o Response Time fica em média pela faixa de 600ms.
+In this first graph we can see that Response Time averages over the 600ms range.
 
-Agora, vamos observar o resultado do Response Time ao adicionar Cache à nossa requisição:
+Now, let's look at the Response Time result by adding Cache to our request:
 
 ![Response Time with Cache](https://raw.githubusercontent.com/paguerapido/paguerapido-api/graficos/images/responsetimecomcache.png)
 
-Vemos que o Cache diminui bastante o Response Time da nossa aplicação, este agora se mantendo na faixa de 300ms. Ou seja, o cache diminuiu pela metade o tempo de resposta da aplicação na rota na qual foi adicionado.
+We see that the Cache greatly decreases the Response Time of our application, now staying in the 300ms range. That is, the cache halved the application response time on the route it was added to.
