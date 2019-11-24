@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paguerapido-api
+  labels:
+    app: paguerapido
+    tier: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paguerapido
+      tier: api
+  template:
+    metadata:
+      labels:
+        app: paguerapido
+        tier: api
+    spec:
+      containers:
+        - name: api
+          image: paguerapido-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://mongo:27017/app'
+            - name: NODE_ENV
+              value: 'production'
