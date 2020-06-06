@@ -8,7 +8,7 @@
     "dev": "tsc-watch --onSuccess \"node ./dist/index.js\""
   },
   "dependencies": {
-    "apollo-server": "^2.9.0",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.9.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
